@@ -1,3 +1,4 @@
+import random
 import re
 from entities.Player import Player
 
@@ -12,6 +13,10 @@ class Menu:
         print("2. Load Game")
         print("3. Quit")
         print("[]" * 20)
+        while True:
+            choice = input("Pick an option: ").strip()
+            if choice in ["1","2","3"]:
+                return choice
 
     @staticmethod
     def get_main_menu_choice():
@@ -24,7 +29,7 @@ class Menu:
     @staticmethod
     def create_new_hero():
         print("[]" * 20)
-        print("[] Whats your hero's name? []")
+        print("[]------Whats your hero's name?-------[]")
         print("[]" * 20)
         while True:
             playername = input().strip()
@@ -32,3 +37,13 @@ class Menu:
                 return Player(playername)
             else:
                 print("Pick a valid name (no special characters, min. 3 letters long)")
+
+    @staticmethod
+    def roll_d20():
+        print("[]" * 27)
+        print("[]-Roll a d20 greater than the monster's dmg to win-[]")
+        print("[]" * 27)
+        input()
+        res = random.randint(1, 20)
+        print("You rolled a {}".format(res))
+        return res
